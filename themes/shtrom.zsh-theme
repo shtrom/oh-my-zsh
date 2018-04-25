@@ -22,7 +22,7 @@ RPROMPT='' # no initial prompt, set dynamically
 
 function rprompt() {
 	local return_code='%(?..%{$fg[red]%}%? ↵%{$reset_color%})'
-	local git_info='$(git_prompt_info)' # gitfast plugin
+	local git_info='$(git_prompt_status) $(git_prompt_info) $(git_commits_status)'
 	local venv_info='$(virtualenv_prompt_info)' # virtualenv plugin
 
 	echo "${return_code}${venv_info} ${git_info}"
