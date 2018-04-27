@@ -17,6 +17,9 @@ ZSH_THEME_GIT_COMMITS_STATUS_SUFFIX=" "
 ZSH_THEME_VIRTUALENV_PREFIX=" [%{$fg[magenta]%}"
 ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}]"
 
+ZSH_THEME_ASYNC_PROMPT_OLD_PREFIX="%{$FX[italic]%}"
+ZSH_THEME_ASYNC_PROMPT_OLD_SUFFIX="%{$FX[no-italic]%}"
+
 PROMPT="${user} ${pwd}$ "
 RPROMPT='' # no initial prompt, set dynamically
 
