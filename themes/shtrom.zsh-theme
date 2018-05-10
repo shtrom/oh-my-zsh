@@ -39,12 +39,13 @@ RPROMPT='' # no initial prompt, set dynamically
 
 function rprompt() { # async-prompt plugin
 	local return_code="%(?..%{$fg[red]%}%? ↵%{$reset_color%})"
+	local run_time="$(runtime)"
 	local venv_info="$(virtualenv_prompt_info)" # virtualenv plugin
 	local git_status="$(git_prompt_status)"
 	local git_info="$(git_prompt_info)"
 	local git_commits="$(git_commits_status)"
 
-	echo "${return_code:+$return_code}${venv_info:+ $venv_info}${git_status:+ $git_status}${git_info:+ $git_info}${git_commits:+ $git_commits}"
+	echo "${run_time:+${run_time}s}${return_code:+ $return_code}${venv_info:+ $venv_info}${git_status:+ $git_status}${git_info:+ $git_info}${git_commits:+ $git_commits}"
 }
 
 # vim: ft=zsh
