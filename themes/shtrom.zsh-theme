@@ -1,4 +1,4 @@
-local pwd='%{$fg[blue]%}%~%{$reset_color%}'
+local pwd='%{$fg[white]%}%~%{$reset_color%}'
 
 local prompt_sign='$'
 local user='%{$fg[magenta]%}%n%{$reset_color%}'
@@ -34,7 +34,7 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}]"
 ZSH_THEME_ASYNC_PROMPT_OLD_PREFIX="%{$FX[italic]%}"
 ZSH_THEME_ASYNC_PROMPT_OLD_SUFFIX="%{$FX[no-italic]%}"
 
-PROMPT="[%{$fg[white]%}%*%{${reset_color}%}] ${user_host:+$user_host }${pwd}${prompt_sign} "
+PROMPT="[%{$fg[blue]%}%*%{${reset_color}%}] ${user_host:+$user_host }${pwd}${prompt_sign} "
 RPROMPT='' # no initial prompt, set dynamically
 
 function rprompt() { # async-prompt plugin
