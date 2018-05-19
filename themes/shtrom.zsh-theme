@@ -1,11 +1,9 @@
 local pwd='%{$fg[white]%}%~%{$reset_color%}'
 
-local prompt_sign='$'
 local user='%{$fg[magenta]%}%n%{$reset_color%}'
 local host=''
 
 if [[ $UID = 0 ]]; then
-	prompt_sign='%{$fg[red]%}%#%{$reset_color%}'
 	user='%{$fg[red]$FX[bold]%}%n%{$FX[no-nobold]$reset_color%}'
 elif [[ $USERNAME = $SHTROM_THEME_USERNAME ]]; then
 	user=''
@@ -34,7 +32,7 @@ ZSH_THEME_VIRTUALENV_SUFFIX="%{$reset_color%}]"
 ZSH_THEME_ASYNC_PROMPT_OLD_PREFIX="%{$FX[italic]%}"
 ZSH_THEME_ASYNC_PROMPT_OLD_SUFFIX="%{$FX[no-italic]%}"
 
-PROMPT="[%{$fg[blue]%}%*%{${reset_color}%}] ${user_host:+$user_host }${pwd}${prompt_sign} "
+PROMPT="[%{$fg[blue]%}%*%{${reset_color}%}] ${user_host:+$user_host }${pwd}%(!.%{$fg[red]%}#%{$reset_color%}.$) "
 RPROMPT='' # no initial prompt, set dynamically
 
 function rprompt() { # async-prompt plugin
