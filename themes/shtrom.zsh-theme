@@ -1,6 +1,5 @@
 local pwd='%{$fg[white]%}%~%{$reset_color%}'
 
-local prompt_sign='$'
 local user='%{$fg[magenta]%}%n%{$reset_color%}'
 local host=''
 
