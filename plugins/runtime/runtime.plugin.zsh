@@ -3,7 +3,10 @@
 #
 # Copyright, 2018, Olivier Mehani <shtrom+zsh@ssji.net>, MIT licensed
 #
-local _RUNTIME_FILE=$(umask 7077; mktemp /tmp/zsh_runtime.$$.XXXXXX)
+
+[[ -o interactive ]] || return
+
+_RUNTIME_FILE=$(umask 7077; mktemp /tmp/zsh_runtime.$$.XXXXXX)
 
 function runtime() {
 	local last=$(cat ${_RUNTIME_FILE} 2>/dev/null)

@@ -8,9 +8,11 @@
 #	2015, Anish Athalye (initial idea and code)
 #	2018, Olivier Mehani <shtrom+zsh@ssji.net> (this plugin), MIT licensed
 #
+[[ -o interactive ]] || return
+
 setopt prompt_subst # enable command substition in prompt
 
-local _RPROMPT_FILE=$(umask 7077; mktemp /tmp/zsh_async_prompt.$$.XXXXXX)
+_RPROMPT_FILE=$(umask 7077; mktemp /tmp/zsh_async_prompt.$$.XXXXXX)
 
 ASYNC_PROC=0
 function precmd() {
