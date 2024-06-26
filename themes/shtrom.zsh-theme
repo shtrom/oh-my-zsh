@@ -26,28 +26,31 @@ ZSH_THEME_GIT_PROMPT_DIRTY=""
 # ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_ADDED="%{${fg[green]}%}✚"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{${fg[red]}%}✹"
+ZSH_THEME_GIT_PROMPT_MODIFIED="%{${fg[red]}%}✹"
+ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} %{%G✖%}"
+ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} %{%G➜%}"
+ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} %{%G═%}"
+ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G✭%}"
 ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="+"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX="-"
-ZSH_THEME_GIT_COMMITS_STATUS_PREFIX="u"
-ZSH_THEME_GIT_COMMITS_STATUS_SUFFIX=" "
 
 ZSH_THEME_VIRTUALENV_PREFIX="[%{${fg[magenta]}%}"
 ZSH_THEME_VIRTUALENV_SUFFIX="%{${reset_color}%}]"
 
 PROMPT="[%{${fg[blue]}%}%*%{${reset_color}%}] ${user_host:+${user_host} }${pwd}%(!.%{${fg[red]}%}#%{${reset_color}%}.$) "
-# RPROMPT='' # no initial prompt, set dynamically
 
 function rprompt { # async-prompt plugin
-	local return_code="%(?..%{${fg[red]}%}%? ↵%{${reset_color}%})"
+	local return_code='%(?..%{${fg[red]}%}%? ↵%{${reset_color}%})'
 	local run_time="$(runtime)"
 
-	local aws_prompt="$(aws_prompt_info)${AWS_DEFAULT_REGION:+@${AWS_DEFAULT_REGION}}"
-	local git_commits="$(git_commits_status)"
-	local git_info="$(git_prompt_info)"
-	local git_status="$(git_prompt_status)"
-	local venv_info="$(virtualenv_prompt_info)" # virtualenv plugin
+	local aws_prompt='$(aws_prompt_info)${AWS_DEFAULT_REGION:+@${AWS_DEFAULT_REGION}}'
+	local git_commits='$(git_commits_ahead)$(git_commits_behind)'
+	local git_info='$(git_prompt_info)'
+	local git_status='$(git_prompt_status)'
+	local venv_info='$(virtualenv_prompt_info)' # virtualenv plugin
 
 	echo "${run_time:+${run_time}s}${return_code:+ ${return_code}}${aws_prompt:+ ${aws_prompt}}${venv_info:+ ${venv_info}}${git_status:+ ${git_status}}${git_info:+ ${git_info}}${git_commits:+ ${git_commits}}"
 }
+RPROMPT=$(rprompt)
 
 # vim: ft=zsh
