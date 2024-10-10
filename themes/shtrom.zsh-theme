@@ -47,9 +47,10 @@ function rprompt { # async-prompt plugin
 	local git_commits='$(git_commits_ahead)$(git_commits_behind)'
 	local git_info='$(git_prompt_info)'
 	local git_status='$(git_prompt_status)'
+	local pyenv_info='$(pyenv_prompt_info)' # pyenv plugin
 	local venv_info='$(virtualenv_prompt_info)' # virtualenv plugin
 
-	echo "${run_time:+${run_time}s}${return_code:+ ${return_code}}${aws_prompt:+ ${aws_prompt}}${venv_info:+ ${venv_info}}${git_status:+ ${git_status}}${git_info:+ ${git_info}}${git_commits:+ ${git_commits}}"
+	echo "${run_time:+${run_time}s}${return_code:+ ${return_code}}${aws_prompt:+ ${aws_prompt}}${pyenv_info:+ Py${pyenv_info}}${venv_info:+ ${venv_info}}${git_status:+ ${git_status}}${git_info:+ ${git_info}}${git_commits:+ ${git_commits}}"
 }
 RPROMPT=$(rprompt)
 
