@@ -34,6 +34,9 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G✭%}"
 ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="+"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX="-"
 
+ZSH_PYENV_NO_SYSTEM=true
+ZSH_THEME_PYENV_PREFIX="%{${fg[yellow]}%}Py%{${reset_color}%}%{${fg[magenta]}%}"
+ZSH_THEME_PYENV_SUFFIX="%{${reset_color}%}"
 ZSH_THEME_VIRTUALENV_PREFIX="[%{${fg[magenta]}%}"
 ZSH_THEME_VIRTUALENV_SUFFIX="%{${reset_color}%}]"
 
