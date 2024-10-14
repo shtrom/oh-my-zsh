@@ -26,7 +26,6 @@ ZSH_THEME_GIT_PROMPT_DIRTY=""
 # ZSH_THEME_GIT_PROMPT_CLEAN=""
 ZSH_THEME_GIT_PROMPT_ADDED="%{${fg[green]}%}✚"
 ZSH_THEME_GIT_PROMPT_MODIFIED="%{${fg[red]}%}✹"
-ZSH_THEME_GIT_PROMPT_MODIFIED="%{${fg[red]}%}✹"
 ZSH_THEME_GIT_PROMPT_DELETED="%{$fg[red]%} %{%G✖%}"
 ZSH_THEME_GIT_PROMPT_RENAMED="%{$fg[magenta]%} %{%G➜%}"
 ZSH_THEME_GIT_PROMPT_UNMERGED="%{$fg[yellow]%} %{%G═%}"
@@ -53,7 +52,7 @@ function rprompt { # async-prompt plugin
 	local pyenv_info='$(pyenv_prompt_info)' # pyenv plugin
 	local venv_info='$(virtualenv_prompt_info)' # virtualenv plugin
 
-	echo "${run_time:+${run_time}s}${return_code:+ ${return_code}} ${aws_prompt} ${pyenv_info} ${venv_info} ${git_status} ${git_info} ${git_commits}"
+	echo ${run_time:+${run_time}s} ${return_code} ${aws_prompt} ${pyenv_info} ${venv_info} ${git_status} ${git_info} ${git_commits}
 }
 RPROMPT=$(rprompt)
 
