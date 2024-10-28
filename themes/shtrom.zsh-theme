@@ -33,7 +33,6 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED="%{$fg[cyan]%} %{%G✭%}"
 ZSH_THEME_GIT_COMMITS_AHEAD_PREFIX="+"
 ZSH_THEME_GIT_COMMITS_BEHIND_PREFIX="-"
 
-ZSH_PYENV_NO_SYSTEM=true
 ZSH_THEME_PYENV_PREFIX="%{${fg[yellow]}%}Py%{${reset_color}%}%{${fg[magenta]}%}"
 ZSH_THEME_PYENV_SUFFIX="%{${reset_color}%}"
 ZSH_THEME_VIRTUALENV_PREFIX="[%{${fg[magenta]}%}"
@@ -49,10 +48,11 @@ function rprompt { # async-prompt plugin
 	local git_commits='$(git_commits_ahead)$(git_commits_behind)'
 	local git_info='$(git_prompt_info)'
 	local git_status='$(git_prompt_status)'
-	local pyenv_info='$(pyenv_prompt_info)' # pyenv plugin
+	# Set ZSH_MISE_AUTOEXPORT_VERSIONS="true" in zshrc for MISE_TOOL_* to work.
+	local mise_python_info="${MISE_TOOL_PYTHON:+${ZSH_THEME_PYENV_PREFIX}${MISE_TOOL_PYTHON}${ZSH_THEME_PYENV_SUFFIX}}" # pyenv plugin
 	local venv_info='$(virtualenv_prompt_info)' # virtualenv plugin
 
-	echo ${run_time:+${run_time}s} ${return_code} ${aws_prompt} ${pyenv_info} ${venv_info} ${git_status} ${git_info} ${git_commits}
+	echo ${run_time:+${run_time}s} ${return_code} ${aws_prompt} ${mise_python_info} ${venv_info} ${git_status} ${git_info} ${git_commits}
 }
 RPROMPT=$(rprompt)
 
